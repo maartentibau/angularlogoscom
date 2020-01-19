@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiBaseUrl: 'https://api.github.com/repos/maartentibau/angular-logos',
+  ghpagesBaseUrl: 'https://maartentibau.github.io/angular-logos'
 };
 
 /*

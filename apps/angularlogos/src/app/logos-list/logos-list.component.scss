@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.logo {
+  flex: 0 0 auto;
+  width: 180px;
+  margin: 20px;
+  padding: 10px;
+
+  mat-card-content {
+    text-align: center;
+
+    img {
+      height: 100px;
+    }
+  }
+
+  mat-card-title {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  mat-card-actions {
+    margin: 0;
+    text-align: right;
+    font-size: 1.4rem;
+
+    mat-icon {
+      font-size: 1.6rem;
+    }
+  }
+}
