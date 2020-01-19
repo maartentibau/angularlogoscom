@@ -1,6 +1,6 @@
 :host > div {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -9,7 +9,9 @@
 
 .content {
   flex: 1 1 auto;
+  width: 100%;
   max-width: 1440px;
+  box-sizing: border-box;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -26,9 +28,9 @@
     }
   }
 
-  padding: 20px;
+  padding: 2em;
   flex: 0 0 auto;
-  background-color: #e9ecef;
+  background-color: rgba(0, 0, 0, 0.04);
   border-radius: 0.3rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
