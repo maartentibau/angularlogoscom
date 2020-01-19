@@ -1,10 +1,14 @@
-<mat-card class="logo" *ngFor="let logo of logos$ | async">
-  <mat-card-content>
-    <img [src]="logo.imageUrl" [title]="logo.name" height="100px" />
-  </mat-card-content>
-  <mat-card-title>{{ logo.name }}</mat-card-title>
-  <mat-card-actions>
-    <a mat-icon-button [href]="logo.githubUrl" target="_blank"><mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon></a>
-    <a mat-icon-button [href]="logo.rawUrl" target="_blank"><mat-icon fontSet="fal" fontIcon="fa-file-code"></mat-icon></a>
-  </mat-card-actions>
-</mat-card>
+<app-search (searchTermEmit)="searchTerm$.next($event)"></app-search>
+
+<div class="card-container">
+  <mat-card class="logo" *ngFor="let logo of logos$ | async">
+    <mat-card-content>
+      <img [src]="logo.imageUrl" [title]="logo.name" height="100px" />
+    </mat-card-content>
+    <mat-card-title>{{ logo.name }}</mat-card-title>
+    <mat-card-actions>
+      <a mat-icon-button [href]="logo.githubUrl" target="_blank"><mat-icon fontSet="fab" fontIcon="fa-github"></mat-icon></a>
+      <a mat-icon-button [href]="logo.rawUrl" target="_blank"><mat-icon fontSet="fal" fontIcon="fa-file-code"></mat-icon></a>
+    </mat-card-actions>
+  </mat-card>
+</div>
