@@ -10,7 +10,7 @@
       },
       "root": "apps/angularlogos",
       "sourceRoot": "apps/angularlogos/src",
-      "prefix": "angularlogos.com",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
