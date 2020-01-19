@@ -31,15 +31,17 @@
   },
   "private": true,
   "dependencies": {
-    "@nrwl/angular": "^8.11.2",
     "@angular/animations": "^8.2.0",
+    "@angular/cdk": "~8.2.3",
     "@angular/common": "^8.2.0",
     "@angular/compiler": "^8.2.0",
     "@angular/core": "^8.2.0",
     "@angular/forms": "^8.2.0",
+    "@angular/material": "^8.2.3",
     "@angular/platform-browser": "^8.2.0",
     "@angular/platform-browser-dynamic": "^8.2.0",
     "@angular/router": "^8.2.0",
+    "@nrwl/angular": "^8.11.2",
     "core-js": "^2.5.4",
     "rxjs": "~6.4.0",
     "zone.js": "^0.9.1"
