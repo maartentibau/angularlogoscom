@@ -100,6 +100,10 @@
             "tsConfig": "apps/angularlogos/tsconfig.spec.json",
             "setupFile": "apps/angularlogos/src/test-setup.ts"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     },
