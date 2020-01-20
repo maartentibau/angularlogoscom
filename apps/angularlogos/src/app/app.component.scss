@@ -12,7 +12,7 @@
   width: 100%;
   max-width: 1440px;
   box-sizing: border-box;
-  padding: 2em;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -21,6 +21,7 @@
   h1 {
     margin-top: 0;
     text-align: left;
+    color: #c3002f;
 
     a {
       text-decoration: none;
@@ -28,7 +29,17 @@
     }
   }
 
-  padding: 2em;
+  p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  a.contribute {
+    background-color: #c3002f;
+    color: #ffffff;
+  }
+
+  padding: 2rem;
   flex: 0 0 auto;
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 0.3rem;
@@ -41,4 +52,5 @@
 
 .credits {
   flex: 0 0 auto;
+  font-size: 0.8rem;
 }
