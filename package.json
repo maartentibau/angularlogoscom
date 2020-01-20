@@ -27,7 +27,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "prettier": "pretty-quick --staged",
-    "pre-commit": "npm run lint && npm run prettier"
+    "pre-commit": "npm run lint && npm run prettier",
+    "deploy": "ng deploy --cname=angularlogos.com"
   },
   "private": true,
   "dependencies": {
