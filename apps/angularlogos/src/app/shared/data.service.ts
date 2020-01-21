@@ -26,7 +26,10 @@ export class DataService {
   }
 
   getLogosFiltered(searchTerm: string) {
-    return this.getLogos().pipe(map((logos) => (searchTerm ? logos.filter((logo) => logo.name.includes(searchTerm)) : logos)));
+    const lowerCaseTerm = searchTerm.toLowerCase();
+    return this.getLogos().pipe(
+      map((logos) => (searchTerm ? logos.filter((logo) => logo.name.toLowerCase().includes(lowerCaseTerm)) : logos))
+    );
   }
 
   private contentToLogoEntry(content: any): LogoEntry {
