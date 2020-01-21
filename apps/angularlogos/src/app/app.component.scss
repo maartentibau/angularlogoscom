@@ -22,10 +22,17 @@
     margin-top: 0;
     text-align: left;
     color: #c3002f;
+    font-size: 2.5rem;
 
     a {
+      line-height: 3rem;
       text-decoration: none;
       color: inherit;
+
+      img {
+        height: 4rem;
+        margin-bottom: -1rem;
+      }
     }
   }
 
