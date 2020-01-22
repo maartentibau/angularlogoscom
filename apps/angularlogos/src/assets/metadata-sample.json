@@ -1,5 +1,5 @@
 {
-  "$schema": "https://angularlogos.com/assets/metadata-schema.json",
+  "$schema": "./metadata-schema.json",
   "logos": {
     "angular.svg": {
       "name": "Angular",
