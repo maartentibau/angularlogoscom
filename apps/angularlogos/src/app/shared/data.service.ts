@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, shareReplay } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { map, shareReplay, pluck } from 'rxjs/operators';
+import { Observable, forkJoin } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { LogoEntry } from './logo-entry';
+import { LogoMetadataAll, LogoMetadataFileSchema } from './logo-metadata';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,11 @@ export class DataService {
 
   getLogos() {
     if (!this.logos$) {
-      this.logos$ = this.http.get<any[]>(`${environment.apiBaseUrl}/contents/logos`).pipe(
-        map((contents) => contents.map((content) => this.contentToLogoEntry(content))),
+      this.logos$ = forkJoin([
+        this.http.get<any[]>(`${environment.apiBaseUrl}/contents/logos`),
+        this.http.get<LogoMetadataFileSchema>(environment.metadataUrl).pipe(pluck('logos'))
+      ]).pipe(
+        map(([contents, metadataAll]) => contents.map((content) => this.contentToLogoEntry(content, metadataAll))),
         shareReplay()
       );
     }
@@ -32,16 +36,20 @@ export class DataService {
     );
   }
 
-  private contentToLogoEntry(content: any): LogoEntry {
+  private contentToLogoEntry(content: any, metadataAll: LogoMetadataAll): LogoEntry {
+    const filename = content.name;
+    const metadata = metadataAll[filename] || {};
+
     return {
-      filename: content.name,
-      name: content.name
+      filename,
+      name: filename
         .split('.')
         .slice(0, 1)
         .join(''),
-      imageUrl: environment.ghpagesBaseUrl + '/logos/' + content.name,
+      imageUrl: `${environment.ghpagesBaseUrl}/logos/${filename}`,
       rawUrl: content.download_url,
-      githubUrl: content.html_url
+      githubUrl: content.html_url,
+      ...metadata
     };
   }
 }
