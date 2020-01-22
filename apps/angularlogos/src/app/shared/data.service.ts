@@ -46,7 +46,7 @@ export class DataService {
         .split('.')
         .slice(0, 1)
         .join(''),
-      imageUrl: environment.ghpagesBaseUrl + '/logos/' + content.name,
+      imageUrl: `${environment.ghpagesBaseUrl}/logos/${filename}`,
       rawUrl: content.download_url,
       githubUrl: content.html_url,
       ...metadata
