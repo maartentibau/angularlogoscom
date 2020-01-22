@@ -1,4 +1,4 @@
-import { Component, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Output, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,9 +7,14 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SearchComponent {
+export class SearchComponent implements OnChanges {
   searchControl = new FormControl('');
+  @Input() searchTerm: string;
   @Output() searchTermEmit = this.searchControl.valueChanges;
+
+  ngOnChanges() {
+    this.searchControl.setValue(this.searchTerm);
+  }
 
   clear() {
     this.searchControl.setValue('');

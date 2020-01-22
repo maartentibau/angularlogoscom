@@ -1,4 +1,4 @@
-<app-search (searchTermEmit)="searchTerm$.next($event)"></app-search>
+<app-search [searchTerm]="firstSearchTerm$ | async" (searchTermEmit)="searchTerm$.next($event)"></app-search>
 
 <div class="card-container">
   <mat-card class="logo" *ngFor="let logo of logos$ | async">
