@@ -9,12 +9,13 @@ import { LogosListComponent } from './logos-list/logos-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
+import { appRoutes } from './app.routes';
 
 @NgModule({
   declarations: [AppComponent, LogosListComponent, SearchComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabled' }),
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatButtonModule,
