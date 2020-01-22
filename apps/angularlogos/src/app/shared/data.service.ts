@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, shareReplay, pluck } from 'rxjs/operators';
+import { map, shareReplay, pluck, withLatestFrom } from 'rxjs/operators';
 import { Observable, forkJoin } from 'rxjs';
 
 import { environment } from '../../environments/environment';
@@ -17,16 +17,20 @@ export class DataService {
 
   getLogos() {
     if (!this.logos$) {
-      this.logos$ = forkJoin([
-        this.http.get<any[]>(`${environment.apiBaseUrl}/contents/logos`),
-        this.http.get<LogoMetadataFileSchema>(environment.metadataUrl).pipe(pluck('logos'))
-      ]).pipe(
+      this.logos$ = forkJoin([this.http.get<any[]>(`${environment.apiBaseUrl}/contents/logos`), this.getMetadataCached()]).pipe(
         map(([contents, metadataAll]) => contents.map((content) => this.contentToLogoEntry(content, metadataAll))),
         shareReplay()
       );
     }
 
     return this.logos$;
+  }
+
+  getLogosWithoutMetadata() {
+    return this.getLogos().pipe(
+      withLatestFrom(this.getMetadataCached()),
+      map(([logos, metadata]) => logos.filter((logo) => !metadata[logo.filename]))
+    );
   }
 
   getLogosFiltered(searchTerm: string) {
@@ -51,5 +55,9 @@ export class DataService {
       githubUrl: content.html_url,
       ...metadata
     };
+  }
+
+  private getMetadataCached() {
+    return this.http.get<LogoMetadataFileSchema>(environment.metadataUrl).pipe(pluck('logos'), shareReplay());
   }
 }
