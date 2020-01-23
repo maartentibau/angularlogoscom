@@ -16,6 +16,8 @@ export class LogosListComponent implements OnInit {
   searchTerm$ = new Subject<string>();
   firstSearchTerm$: Observable<string>;
 
+  randomSeed = '?v=' + Math.floor(Math.random() * 10);
+
   constructor(private ds: DataService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
