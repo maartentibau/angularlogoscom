@@ -13,7 +13,7 @@ export class SearchComponent implements OnChanges {
   @Output() searchTermEmit = this.searchControl.valueChanges;
 
   ngOnChanges() {
-    this.searchControl.setValue(this.searchTerm);
+    this.searchControl.setValue(this.searchTerm, { emitEvent: false });
   }
 
   clear() {

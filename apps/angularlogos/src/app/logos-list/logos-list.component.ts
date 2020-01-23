@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { debounceTime, startWith, switchMap, map, first, takeUntil, tap, filter } from 'rxjs/operators';
+import { Observable, Subject, concat } from 'rxjs';
+import { debounceTime, startWith, switchMap, map, first, takeUntil, tap } from 'rxjs/operators';
 
 import { DataService } from '../shared/data.service';
 import { LogoEntry } from '../shared/logo-entry';
@@ -24,10 +24,10 @@ export class LogosListComponent implements OnInit {
     this.firstSearchTerm$ = this.route.queryParamMap.pipe(
       map((params) => params.get('q')),
       first((term) => !!term),
-      takeUntil(this.searchTerm$.pipe(filter((term) => !!term)))
+      takeUntil(this.searchTerm$)
     );
 
-    this.logos$ = this.searchTerm$.pipe(
+    this.logos$ = concat(this.firstSearchTerm$, this.searchTerm$).pipe(
       debounceTime(200),
       tap((term) => this.setSearchQueryParam(term)),
       startWith(''),
