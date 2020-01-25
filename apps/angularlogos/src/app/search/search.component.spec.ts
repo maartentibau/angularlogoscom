@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatFormFieldModule, MatIconModule, MatInputModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SearchComponent } from './search.component';
 
@@ -8,6 +11,7 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule, MatFormFieldModule, MatInputModule, MatIconModule, ReactiveFormsModule],
       declarations: [SearchComponent]
     }).compileComponents();
   }));
@@ -15,10 +19,55 @@ describe('SearchComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render', () => {
+    expect(fixture).toMatchSnapshot();
+  });
+
+  describe('ngOnChanges', () => {
+    it('should set a new value', () => {
+      // prepare
+      component.searchTerm = 'search-for';
+      jest.spyOn(component.searchControl, 'setValue');
+
+      // act
+      component.ngOnChanges();
+
+      // check
+      expect(component.searchControl.setValue).toHaveBeenCalledWith(component.searchTerm, { emitEvent: false });
+    });
+  });
+
+  describe('clear', () => {
+    const EMPTY_STRING = '';
+
+    it('should clear the searchTerm', () => {
+      // prepare
+      component.searchControl.setValue('some-value');
+      jest.spyOn(component.searchControl, 'setValue');
+
+      // act
+      component.clear();
+
+      // check
+      expect(component.searchControl.setValue).toHaveBeenCalledWith(EMPTY_STRING);
+      expect(component.searchControl.value).toBe(EMPTY_STRING);
+    });
+
+    it('should emit empty string', (done) => {
+      // check
+      component.searchControl.valueChanges.subscribe((value: string) => {
+        expect(value).toBe(EMPTY_STRING);
+        done();
+      });
+
+      // act
+      component.clear();
+    });
   });
 });

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { LogosListComponent } from './logos-list/logos-list.component';
 import { MetacheckComponent } from './metacheck/metacheck.component';
+import { LogosComponent } from './logos/logos.component';
 
 export const appRoutes: Routes = [
-  { path: '', component: LogosListComponent },
+  { path: '', component: LogosComponent },
   { path: 'metacheck', component: MetacheckComponent },
   { path: '**', redirectTo: '/' }
 ];

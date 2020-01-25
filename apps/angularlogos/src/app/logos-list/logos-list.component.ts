@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, concat } from 'rxjs';
-import { debounceTime, startWith, switchMap, map, first, takeUntil, tap } from 'rxjs/operators';
+import { concat, Observable, Subject } from 'rxjs';
+import { debounceTime, first, map, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import { DataService } from '../shared/data.service';
 import { LogoEntry } from '../shared/logo-entry';
@@ -9,18 +9,19 @@ import { LogoEntry } from '../shared/logo-entry';
 @Component({
   selector: 'app-logos-list',
   templateUrl: './logos-list.component.html',
-  styleUrls: ['./logos-list.component.scss']
+  styleUrls: ['./logos-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LogosListComponent implements OnInit {
-  logos$: Observable<LogoEntry[]>;
-  searchTerm$ = new Subject<string>();
-  firstSearchTerm$: Observable<string>;
+export class LogosListComponent {
+  readonly logos$: Observable<LogoEntry[]>;
+  readonly searchTerm$: Subject<string>;
+  readonly firstSearchTerm$: Observable<string>;
 
-  randomSeed = '?v=' + Math.floor(Math.random() * 10);
+  randomSeed: string = `?v=${Math.floor(Math.random() * 10)}`;
 
-  constructor(private ds: DataService, private route: ActivatedRoute, private router: Router) {}
+  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
+    this.searchTerm$ = new Subject<string>();
 
-  ngOnInit() {
     this.firstSearchTerm$ = this.route.queryParamMap.pipe(
       map((params) => params.get('q')),
       first((term) => !!term),
@@ -31,8 +32,12 @@ export class LogosListComponent implements OnInit {
       debounceTime(200),
       tap((term) => this.setSearchQueryParam(term)),
       startWith(''),
-      switchMap((term) => this.ds.getLogosFiltered(term))
+      switchMap((term) => this.dataService.getLogosFiltered(term))
     );
+  }
+
+  searchTermChangeHandler(searchTerm: string) {
+    this.searchTerm$.next(searchTerm);
   }
 
   private setSearchQueryParam(searchTerm: string) {
