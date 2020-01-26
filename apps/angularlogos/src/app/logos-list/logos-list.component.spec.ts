@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { MatCardModule, MatIconModule } from '@angular/material';
-import { EMPTY } from 'rxjs';
+import { EMPTY, Observable, of } from 'rxjs';
 
 import { LogosListComponent } from './logos-list.component';
 import { DataService } from '../shared/data.service';
@@ -19,8 +19,7 @@ class DataServiceMock {
 })
 class SearchComponentMock {
   @Input() searchTerm: string;
-
-  @Output() searchTermEmit: EventEmitter<string>;
+  @Output() searchTermChange: Observable<string> = EMPTY;
 }
 
 describe('LogosListComponent', () => {
