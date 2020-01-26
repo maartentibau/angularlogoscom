@@ -36,5 +36,7 @@ jobs:
         run: npm run test
 
       - name: Deploy
+        env:
+          CI: true
         if: success() && github.event_name == 'push'
         run: npm run deploy
