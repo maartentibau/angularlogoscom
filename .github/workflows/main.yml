@@ -23,8 +23,6 @@ jobs:
           node-version: 12.x
 
       - name: Install
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN}}
         run: CYPRESS_INSTALL_BINARY=0 npm install
 
       - name: Lint
@@ -36,7 +34,8 @@ jobs:
         run: npm run test
 
       - name: Deploy
-        env:
-          CI: true
         if: success() && github.event_name == 'push'
         run: npm run deploy
+        env:
+          CI: true
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN}}
