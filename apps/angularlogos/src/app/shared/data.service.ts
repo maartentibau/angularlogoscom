@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, shareReplay, pluck, withLatestFrom } from 'rxjs/operators';
-import { Observable, forkJoin } from 'rxjs';
+import { map, pluck, shareReplay, withLatestFrom } from 'rxjs/operators';
+import { forkJoin, Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { LogoEntry } from './logo-entry';
-import { LogoMetadataAll, LogoMetadataFileSchema } from './logo-metadata';
+import { LogoMetadataEntities, LogoMetadataFileSchema } from './logo-metadata';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,10 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  getLogos() {
+  getLogos(): Observable<LogoEntry[]> {
     if (!this.logos$) {
       this.logos$ = forkJoin([this.http.get<any[]>(`${environment.apiBaseUrl}/contents/logos`), this.getMetadataCached()]).pipe(
-        map(([contents, metadataAll]) => contents.map((content) => this.contentToLogoEntry(content, metadataAll))),
+        map(([contents, metadataAll]) => contents.map((content) => this.mapGitHubContentToLogoEntry(content, metadataAll))),
         shareReplay()
       );
     }
@@ -26,21 +26,21 @@ export class DataService {
     return this.logos$;
   }
 
-  getLogosWithoutMetadata() {
+  getLogosWithoutMetadata(): Observable<LogoEntry[]> {
     return this.getLogos().pipe(
       withLatestFrom(this.getMetadataCached()),
       map(([logos, metadata]) => logos.filter((logo) => !metadata[logo.filename]))
     );
   }
 
-  getLogosFiltered(searchTerm: string) {
+  getLogosFiltered(searchTerm: string): Observable<LogoEntry[]> {
     const lowerCaseTerm = searchTerm.toLowerCase();
     return this.getLogos().pipe(
       map((logos) => (searchTerm ? logos.filter((logo) => logo.name.toLowerCase().includes(lowerCaseTerm)) : logos))
     );
   }
 
-  private contentToLogoEntry(content: any, metadataAll: LogoMetadataAll): LogoEntry {
+  private mapGitHubContentToLogoEntry(content: any, metadataAll: LogoMetadataEntities): LogoEntry {
     const filename = content.name;
     const metadata = metadataAll[filename] || {};
 
@@ -57,7 +57,7 @@ export class DataService {
     };
   }
 
-  private getMetadataCached() {
+  private getMetadataCached(): Observable<LogoMetadataEntities> {
     return this.http.get<LogoMetadataFileSchema>(environment.metadataUrl).pipe(pluck('logos'), shareReplay());
   }
 }

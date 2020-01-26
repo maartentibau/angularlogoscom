@@ -1,5 +1,6 @@
-import { Component, Output, ChangeDetectionStrategy, Input, OnChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -8,9 +9,10 @@ import { FormControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent implements OnChanges {
-  searchControl = new FormControl('');
+  searchControl: FormControl = new FormControl('');
+
   @Input() searchTerm: string;
-  @Output() searchTermEmit = this.searchControl.valueChanges;
+  @Output() searchTermChange: Observable<string> = this.searchControl.valueChanges;
 
   ngOnChanges() {
     this.searchControl.setValue(this.searchTerm, { emitEvent: false });

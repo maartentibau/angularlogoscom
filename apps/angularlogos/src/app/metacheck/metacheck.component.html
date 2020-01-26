@@ -1,4 +1,6 @@
 <h2>Logos without metadata</h2>
 
-<strong>Count:</strong> {{ (logosWithoutMetadata$ | async)?.length }}
-<pre>{{ fullLogoMetadata$ | async | json }}</pre>
+<ng-container *ngIf="logosWithoutMetadata$ | async as data">
+  <strong>Count:</strong> {{ data.count }}
+  <pre>{{ data.logos | json }}</pre>
+</ng-container>
