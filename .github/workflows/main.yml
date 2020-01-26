@@ -24,7 +24,7 @@ jobs:
 
       - name: Install
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN}}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN}}
         run: CYPRESS_INSTALL_BINARY=0 npm install
 
       - name: Lint
