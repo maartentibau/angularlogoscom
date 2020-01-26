@@ -29,7 +29,7 @@
     "help": "nx help",
     "prettier": "pretty-quick --staged",
     "pre-commit": "npm run lint && npm run prettier",
-    "deploy": "ng deploy --cname=angularlogos.com --name='Deploy Dummy' --email='deploy@webtrix.be'"
+    "deploy": "ng deploy --cname=angularlogos.com --name='Deploy Dummy' --email='deploy@webtrix.be' --silent=false"
   },
   "private": true,
   "dependencies": {
