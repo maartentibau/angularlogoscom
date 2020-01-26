@@ -44,8 +44,6 @@ describe('SearchComponent', () => {
   });
 
   describe('clear', () => {
-    const EMPTY_STRING = '';
-
     it('should clear the searchTerm', () => {
       // prepare
       component.searchControl.setValue('some-value');
@@ -55,14 +53,14 @@ describe('SearchComponent', () => {
       component.clear();
 
       // check
-      expect(component.searchControl.setValue).toHaveBeenCalledWith(EMPTY_STRING);
-      expect(component.searchControl.value).toBe(EMPTY_STRING);
+      expect(component.searchControl.setValue).toHaveBeenCalledWith('');
+      expect(component.searchControl.value).toBe('');
     });
 
     it('should emit empty string', (done) => {
       // check
       component.searchControl.valueChanges.subscribe((value: string) => {
-        expect(value).toBe(EMPTY_STRING);
+        expect(value).toBe('');
         done();
       });
 
