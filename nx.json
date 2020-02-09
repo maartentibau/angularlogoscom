@@ -16,7 +16,7 @@
     },
     "angularlogos-e2e": {
       "tags": [],
-      "implicitDependencies": ["angularlogos"]
+      "implicitDependencies": ["angularlogos", "angularlogos"]
     }
   }
 }
