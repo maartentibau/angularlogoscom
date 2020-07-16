@@ -33,6 +33,8 @@
     margin: 0;
     text-align: right;
     font-size: 1.4rem;
+    display: flex;
+    justify-content: space-evenly;
 
     mat-icon {
       font-size: 1.6rem;
