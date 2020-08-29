@@ -81,15 +81,14 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/angularlogos/tsconfig.app.json", "apps/angularlogos/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**", "!apps/angularlogos/**"]
+            "exclude": ["**/node_modules/**", "!apps/angularlogos/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/angularlogos/jest.config.js",
-            "tsConfig": "apps/angularlogos/tsconfig.spec.json",
-            "setupFile": "apps/angularlogos/src/test-setup.ts"
+            "passWithNoTests": true
           }
         },
         "deploy": {
@@ -120,7 +119,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/angularlogos-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/angularlogos-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/angularlogos-e2e/**/*"]
           }
         }
       }

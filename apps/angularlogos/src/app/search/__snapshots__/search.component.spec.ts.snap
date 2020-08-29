@@ -3,11 +3,11 @@
 exports[`SearchComponent should render 1`] = `
 <app-search
   searchControl={[Function FormControl]}
-  searchTermChange={[Function EventEmitter]}
+  searchTermChange={[Function EventEmitter_]}
 >
   <mat-form-field
     appearance="fill"
-    class="mat-form-field ng-tns-c2-0 mat-primary"
+    class="mat-form-field mat-primary"
   >
     <div
       class="mat-form-field-wrapper"
