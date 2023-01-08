@@ -12,13 +12,17 @@ on:
 jobs:
   build_lint_test_deploy:
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [ '14.17.6' ]
 
     steps:
       - name: Build the app
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Use Node.js 12.x
-        uses: actions/setup-node@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
           node-version: 12.x
 
