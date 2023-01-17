@@ -5,6 +5,9 @@ import { debounceTime, first, map, startWith, switchMap, takeUntil, tap } from '
 
 import { DataService } from '../shared/data.service';
 import { LogoEntry } from '../shared/logo-entry';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faGlobe, faCode } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-logos-list',
@@ -14,13 +17,18 @@ import { LogoEntry } from '../shared/logo-entry';
 })
 export class LogosListComponent {
   readonly logos$: Observable<LogoEntry[]>;
-  readonly searchTerm$: Subject<string>;
-  readonly firstSearchTerm$: Observable<string>;
+  readonly searchTerm$: Subject<string | null>;
+  readonly firstSearchTerm$: Observable<string | null>;
 
   randomSeed: string = `?v=${Math.floor(Math.random() * 10)}`;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
-    this.searchTerm$ = new Subject<string>();
+  constructor(
+    private dataService: DataService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private faIconLibrary: FaIconLibrary
+  ) {
+    this.searchTerm$ = new Subject<string | null>();
 
     this.firstSearchTerm$ = this.route.queryParamMap.pipe(
       map((params) => params.get('q')),
@@ -34,13 +42,15 @@ export class LogosListComponent {
       startWith(''),
       switchMap((term) => this.dataService.getLogosFiltered(term))
     );
+
+    this.faIconLibrary.addIcons(faGithub, faGlobe, faCode);
   }
 
-  searchTermChangeHandler(searchTerm: string) {
+  searchTermChangeHandler(searchTerm: string | null) {
     this.searchTerm$.next(searchTerm);
   }
 
-  private setSearchQueryParam(searchTerm: string) {
+  private setSearchQueryParam(searchTerm: string | null) {
     const queryParams = searchTerm ? { q: searchTerm } : {};
     this.router.navigate([], { queryParams });
   }

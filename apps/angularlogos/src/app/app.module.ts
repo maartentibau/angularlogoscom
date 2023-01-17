@@ -17,12 +17,13 @@ import { LogosListComponent } from './logos-list/logos-list.component';
 import { SearchComponent } from './search/search.component';
 import { MetacheckComponent } from './metacheck/metacheck.component';
 import { LogosComponent } from './logos/logos.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [AppComponent, LogosListComponent, SearchComponent, MetacheckComponent, LogosComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabled' }),
+    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatButtonModule,
@@ -31,7 +32,8 @@ import { LogosComponent } from './logos/logos.component';
     MatGridListModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
