@@ -11,7 +11,7 @@ import { LogoMetadataEntities, LogoMetadataFileSchema } from './logo-metadata';
   providedIn: 'root'
 })
 export class DataService {
-  private logos$: Observable<LogoEntry[]>;
+  private logos$!: Observable<LogoEntry[]>;
 
   constructor(private http: HttpClient) {}
 
@@ -33,8 +33,8 @@ export class DataService {
     );
   }
 
-  getLogosFiltered(searchTerm: string): Observable<LogoEntry[]> {
-    const lowerCaseTerm = searchTerm.toLowerCase();
+  getLogosFiltered(searchTerm: string | null): Observable<LogoEntry[]> {
+    const lowerCaseTerm = searchTerm?.toLowerCase() ?? '';
     return this.getLogos().pipe(
       map((logos) => (searchTerm ? logos.filter((logo) => logo.name.toLowerCase().includes(lowerCaseTerm)) : logos))
     );
@@ -44,15 +44,16 @@ export class DataService {
     const filename = content.name;
     const metadata = metadataAll[filename] || {};
 
-    return {
+    const contentData = {
       filename,
-      name: filename
-        .split('.')
-        .slice(0, 1)
-        .join(''),
+      name: filename.split('.').slice(0, 1).join(''),
       imageUrl: `${environment.ghpagesBaseUrl}/logos/${filename}`,
       rawUrl: content.download_url,
-      githubUrl: content.html_url,
+      githubUrl: content.html_url
+    };
+
+    return {
+      ...contentData,
       ...metadata
     };
   }

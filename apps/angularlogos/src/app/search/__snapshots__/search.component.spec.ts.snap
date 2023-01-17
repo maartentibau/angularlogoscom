@@ -2,43 +2,34 @@
 
 exports[`SearchComponent should render 1`] = `
 <app-search
-  searchControl={[Function FormControl]}
+  __ngContext__={[Function Number]}
+  searchControl={[Function FormControl2]}
   searchTermChange={[Function EventEmitter_]}
 >
   <mat-form-field
-    appearance="fill"
-    class="mat-form-field mat-primary"
+    class="mat-mdc-form-field"
+    subscriptsizing="dynamic"
   >
     <div
-      class="mat-form-field-wrapper"
+      class="mat-mdc-text-field-wrapper mdc-text-field"
     >
       <div
-        class="mat-form-field-flex"
+        class="mat-mdc-form-field-flex"
       >
-        
-        
         <div
-          class="mat-form-field-infix"
+          class="mat-mdc-form-field-infix"
         >
           <input
-            class="mat-input-element mat-form-field-autofill-control"
+            class="mat-mdc-input-element"
             matinput=""
+            subscriptsizing="0"
           />
-          <span
-            class="mat-form-field-label-wrapper"
-          >
-            
-          </span>
         </div>
-        
       </div>
-      
-      <div
-        class="mat-form-field-subscript-wrapper"
-      >
-        
-        
-      </div>
+    </div>
+    <div
+      class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align"
+    >
     </div>
   </mat-form-field>
 </app-search>

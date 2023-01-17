@@ -1,5 +1,7 @@
-<mat-form-field appearance="fill">
+<mat-form-field subscriptSizing="dynamic">
   <mat-label>Search</mat-label>
-  <input matInput [formControl]="searchControl" />
-  <a mat-icon-button matSuffix (click)="clear()"><mat-icon>clear</mat-icon></a>
+  <input matInput subscriptSizing="0" [formControl]="searchControl" />
+  <button *ngIf="searchControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+    <mat-icon>close</mat-icon>
+  </button>
 </mat-form-field>

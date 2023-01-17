@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class SearchComponent implements OnChanges {
   searchControl: FormControl = new FormControl('');
 
-  @Input() searchTerm: string;
+  @Input() searchTerm!: string | null;
   @Output() searchTermChange: Observable<string> = this.searchControl.valueChanges;
 
   ngOnChanges() {

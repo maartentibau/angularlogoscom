@@ -33,9 +33,14 @@
     line-height: 1.4rem;
   }
 
-  a.contribute {
-    background-color: #c3002f;
-    color: #ffffff;
+  a {
+    &.contribute {
+      background-color: #c3002f;
+      color: #ffffff;
+    }
+    &.remove-underline {
+      text-decoration: none;
+    }
   }
 
   p.copyright-note {

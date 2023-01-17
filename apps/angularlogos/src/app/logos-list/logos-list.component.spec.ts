@@ -18,8 +18,8 @@ class DataServiceMock {
     <div>{{ searchTerm | json }}</div>
   `
 })
-class SearchComponentMock {
-  @Input() searchTerm: string;
+class MockSearchComponent {
+  @Input() searchTerm!: string;
   @Output() searchTermChange: Observable<string> = EMPTY;
 }
 
@@ -30,7 +30,7 @@ describe('LogosListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, MatCardModule, MatIconModule],
-      declarations: [LogosListComponent, SearchComponentMock],
+      declarations: [LogosListComponent, MockSearchComponent],
       providers: [{ provide: DataService, useClass: DataServiceMock }]
     }).compileComponents();
   }));

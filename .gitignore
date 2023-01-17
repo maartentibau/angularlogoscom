@@ -4,6 +4,7 @@
 /app/**/*.js
 /app/**/*.js.map
 /out-tsc
+.angular
 
 # Dependencies
 /node_modules
