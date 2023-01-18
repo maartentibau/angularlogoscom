@@ -15,7 +15,20 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/angularlogos/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/angularlogos/src/favicon.ico", "apps/angularlogos/src/assets"],
+        "assets": [
+          "apps/angularlogos/src/favicon.ico",
+          "apps/angularlogos/src/assets",
+          {
+            "glob": "CNAME",
+            "input": "./",
+            "output": "./"
+          },
+          {
+            "glob": ".nojekyll",
+            "input": "./",
+            "output": "./"
+          }
+        ],
         "styles": [
           "./node_modules/normalize.css/normalize.css",
           "apps/angularlogos/src/assets/styles/angularlogos-theme.scss",
@@ -43,7 +56,8 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "optimization": true
         },
         "development": {
           "buildOptimizer": false,
