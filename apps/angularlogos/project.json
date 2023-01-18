@@ -25,6 +25,12 @@
       },
       "configurations": {
         "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/angularlogos/src/environments/environment.ts",
+              "with": "apps/angularlogos/src/environments/environment.prod.ts"
+            }
+          ],
           "budgets": [
             {
               "type": "initial",
