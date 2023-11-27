@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Component, Input, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { EMPTY, Observable } from 'rxjs';
 
 import { LogosListComponent } from './logos-list.component';
@@ -31,7 +30,7 @@ describe('LogosListComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, MatCardModule, MatIconModule, LogosListComponent, MockSearchComponent],
+      imports: [RouterTestingModule, MatCardModule, LogosListComponent, MockSearchComponent],
       providers: [
         { provide: DataService, useValue: dataServiceMock },
         provideNoopAnimations()

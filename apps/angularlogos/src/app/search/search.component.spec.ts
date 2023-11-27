@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +12,7 @@ describe('SearchComponent', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, MatFormFieldModule, MatInputModule, MatIconModule, ReactiveFormsModule, SearchComponent]
+      imports: [NoopAnimationsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, SearchComponent]
     });
   });
 
