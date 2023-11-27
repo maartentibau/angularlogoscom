@@ -1,23 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, pluck, shareReplay, withLatestFrom } from 'rxjs/operators';
+import { map, shareReplay, withLatestFrom } from 'rxjs/operators';
 import { forkJoin, Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import { LogoEntry } from './logo-entry';
-import { LogoMetadataEntities, LogoMetadataFileSchema } from './logo-metadata';
+import { GitHubContentStub, LogoMetadataEntities, LogoMetadataFileSchema } from './logo-metadata';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private logos$!: Observable<LogoEntry[]>;
-
-  constructor(private http: HttpClient) {}
+  private logos$?: Observable<LogoEntry[]>;
+  private http = inject(HttpClient);
 
   getLogos(): Observable<LogoEntry[]> {
     if (!this.logos$) {
-      this.logos$ = forkJoin([this.http.get<any[]>(`${environment.apiBaseUrl}/contents/logos`), this.getMetadataCached()]).pipe(
+      this.logos$ = forkJoin([this.http.get<GitHubContentStub[]>(`${environment.apiBaseUrl}/contents/logos`), this.getMetadataCached()]).pipe(
         map(([contents, metadataAll]) => contents.map((content) => this.mapGitHubContentToLogoEntry(content, metadataAll))),
         shareReplay()
       );
@@ -40,7 +39,7 @@ export class DataService {
     );
   }
 
-  private mapGitHubContentToLogoEntry(content: any, metadataAll: LogoMetadataEntities): LogoEntry {
+  private mapGitHubContentToLogoEntry(content: GitHubContentStub, metadataAll: LogoMetadataEntities): LogoEntry {
     const filename = content.name;
     const metadata = metadataAll[filename] || {};
 
@@ -59,6 +58,6 @@ export class DataService {
   }
 
   private getMetadataCached(): Observable<LogoMetadataEntities> {
-    return this.http.get<LogoMetadataFileSchema>(environment.metadataUrl).pipe(pluck('logos'), shareReplay());
+    return this.http.get<LogoMetadataFileSchema>(environment.metadataUrl).pipe(map(res => res.logos), shareReplay());
   }
 }

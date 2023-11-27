@@ -14,3 +14,9 @@ export interface LogoMetadataEntities {
 export interface LogoMetadataFileSchema {
   logos: LogoMetadataEntities;
 }
+
+export interface GitHubContentStub {
+  name: string;
+  download_url: string;
+  html_url: string;
+}

@@ -1,23 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { EMPTY } from 'rxjs';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { MetacheckComponent } from './metacheck.component';
 import { DataService } from '../shared/data.service';
 
-class DataServiceMock {
-  getLogosWithoutMetadata = () => EMPTY;
-}
 
 describe('MetacheckComponent', () => {
   let component: MetacheckComponent;
   let fixture: ComponentFixture<MetacheckComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
+    const dataServiceMock = {
+      getLogosWithoutMetadata: () => of([])
+    };
+
     TestBed.configureTestingModule({
-      declarations: [MetacheckComponent],
-      providers: [{ provide: DataService, useClass: DataServiceMock }]
-    }).compileComponents();
-  }));
+      imports: [MetacheckComponent],
+      providers: [{ provide: DataService, useValue: dataServiceMock }]
+    });
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MetacheckComponent);

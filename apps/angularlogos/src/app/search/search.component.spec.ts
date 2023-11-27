@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -11,12 +11,11 @@ describe('SearchComponent', () => {
   let component: SearchComponent;
   let fixture: ComponentFixture<SearchComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, MatFormFieldModule, MatInputModule, MatIconModule, ReactiveFormsModule],
-      declarations: [SearchComponent]
-    }).compileComponents();
-  }));
+      imports: [NoopAnimationsModule, MatFormFieldModule, MatInputModule, MatIconModule, ReactiveFormsModule, SearchComponent]
+    });
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SearchComponent);
