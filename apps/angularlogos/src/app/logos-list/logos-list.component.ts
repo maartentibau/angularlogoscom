@@ -8,9 +8,15 @@ import { LogoEntry } from '../shared/logo-entry';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faGlobe, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { SearchComponent } from '../search/search.component';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-logos-list',
+  standalone: true,
+  imports: [SearchComponent, AsyncPipe, NgIf, NgFor, MatCardModule, MatButtonModule],
   templateUrl: './logos-list.component.html',
   styleUrls: ['./logos-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

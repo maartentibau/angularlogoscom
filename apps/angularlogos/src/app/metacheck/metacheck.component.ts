@@ -5,9 +5,12 @@ import { Observable } from 'rxjs';
 import { DataService } from '../shared/data.service';
 import { LogoMetadataEntities } from '../shared/logo-metadata';
 import { LogoEntry } from '../shared/logo-entry';
+import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-metacheck',
+  standalone: true,
+  imports: [NgIf, JsonPipe, AsyncPipe],
   templateUrl: './metacheck.component.html',
   styleUrls: ['./metacheck.component.scss']
 })

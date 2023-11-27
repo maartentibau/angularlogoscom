@@ -1,4 +1,6 @@
-<app-search [searchTerm]="firstSearchTerm$ | async" (searchTermChange)="searchTermChangeHandler($event)"></app-search>
+<app-search
+  [searchTerm]="firstSearchTerm$ | async"
+  (searchTermChange)="searchTermChangeHandler($event)" />
 
 <div class="card-container">
   <mat-card class="logo" *ngFor="let logo of logos$ | async">
@@ -8,14 +10,11 @@
     <mat-card-title>{{ logo.name }}</mat-card-title>
     <mat-card-actions>
       <a *ngIf="logo.website" mat-icon-button [href]="logo.website" target="_blank" title="Website" rel="noreferrer"
-        ><fa-icon [icon]="['fas', 'globe']"></fa-icon
-      ></a>
+        >GLOBE ICON</a>
       <a mat-icon-button [href]="logo.githubUrl" target="_blank" title="Show on GitHub" rel="noreferrer"
-        ><fa-icon [icon]="['fab', 'github']"></fa-icon
-      ></a>
+        >GITHUB ICON</a>
       <a mat-icon-button [href]="logo.rawUrl" target="_blank" title="Show raw" rel="noreferrer"
-        ><fa-icon [icon]="['fas', 'code']"></fa-icon
-      ></a>
+        >CODE ICON</a>
     </mat-card-actions>
   </mat-card>
 </div>
