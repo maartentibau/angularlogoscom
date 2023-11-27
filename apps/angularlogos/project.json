@@ -6,12 +6,12 @@
   "prefix": "angularlogos",
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/angularlogos",
         "index": "apps/angularlogos/src/index.html",
-        "main": "apps/angularlogos/src/main.ts",
+        "browser": "apps/angularlogos/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/angularlogos/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
@@ -60,9 +60,6 @@
           "optimization": true
         },
         "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
           "extractLicenses": false,
           "sourceMap": true,
           "namedChunks": true
