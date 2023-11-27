@@ -193,3 +193,5 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+
+.nx/cache

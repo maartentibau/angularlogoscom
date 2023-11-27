@@ -2,7 +2,6 @@
 
 exports[`SearchComponent should render 1`] = `
 <app-search
-  __ngContext__={[Function Number]}
   searchControl={[Function FormControl2]}
   searchTermChange={[Function EventEmitter_]}
 >
