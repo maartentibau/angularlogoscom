@@ -2,6 +2,10 @@
   flex: 1 1 auto;
 }
 
+.result-count {
+  text-align: center;
+}
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, 180px);
