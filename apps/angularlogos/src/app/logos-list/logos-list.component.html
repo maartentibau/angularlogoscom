@@ -2,6 +2,14 @@
   [searchTerm]="firstSearchTerm$ | async"
   (searchTermChange)="searchTermChangeHandler($event)" />
 
+<div class="result-count">
+  @if (finalSearchTerm$ | async) {
+    Your search returned <strong>{{ logoCount$ | async | i18nPlural: { '=0': 'no results', '=1': 'one result', 'other': '# results' } }}</strong>.
+  } @else {
+    This list contains <strong>{{ logoCount$ | async }} logos</strong>. <a href="https://github.com/maartentibau/angular-logos/pulls" target="_blank" rel="noreferrer">Do you want to add yours?</a>
+  }
+</div>
+
 <div class="card-container">
   <mat-card class="logo" *ngFor="let logo of logos$ | async">
     <mat-card-content>
