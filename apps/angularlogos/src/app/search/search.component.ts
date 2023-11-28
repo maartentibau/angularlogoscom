@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,7 +8,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [NgIf, MatInputModule, MatButtonModule, MatFormFieldModule, ReactiveFormsModule],
+  imports: [MatInputModule, MatButtonModule, MatFormFieldModule, ReactiveFormsModule],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

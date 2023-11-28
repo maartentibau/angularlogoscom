@@ -5,14 +5,14 @@ import { debounceTime, first, map, shareReplay, startWith, switchMap, takeUntil,
 
 import { DataService } from '../shared/data.service';
 import { SearchComponent } from '../search/search.component';
-import { AsyncPipe, I18nPluralPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, I18nPluralPipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-logos-list',
   standalone: true,
-  imports: [SearchComponent, AsyncPipe, NgIf, NgFor, MatCardModule, MatButtonModule, I18nPluralPipe],
+  imports: [SearchComponent, AsyncPipe, MatCardModule, MatButtonModule, I18nPluralPipe],
   templateUrl: './logos-list.component.html',
   styleUrls: ['./logos-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
