@@ -18,3 +18,4 @@ jest.config.js
 protractor.conf.js
 
 /.nx/cache
+/.nx/workspace-data

@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/angularlogos/src",
   "prefix": "angularlogos",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -86,11 +87,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/angularlogos/**/*.ts", "apps/angularlogos/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -99,6 +96,5 @@
         "jestConfig": "apps/angularlogos/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }
