@@ -7,11 +7,10 @@ import { LogoEntry } from '../shared/logo-entry';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-metacheck',
-  standalone: true,
-  imports: [JsonPipe, AsyncPipe],
-  templateUrl: './metacheck.component.html',
-  styleUrls: ['./metacheck.component.scss']
+    selector: 'app-metacheck',
+    imports: [JsonPipe, AsyncPipe],
+    templateUrl: './metacheck.component.html',
+    styleUrls: ['./metacheck.component.scss']
 })
 export class MetacheckComponent {
   readonly logosWithoutMetadata$ = inject(DataService).getLogosWithoutMetadata().pipe(

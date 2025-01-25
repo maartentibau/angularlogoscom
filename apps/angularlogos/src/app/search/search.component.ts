@@ -6,12 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-search',
-  standalone: true,
-  imports: [MatInputModule, MatButtonModule, MatFormFieldModule, ReactiveFormsModule],
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-search',
+    imports: [MatInputModule, MatButtonModule, MatFormFieldModule, ReactiveFormsModule],
+    templateUrl: './search.component.html',
+    styleUrls: ['./search.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent implements OnChanges {
   searchControl = new FormControl('', { nonNullable: true });
