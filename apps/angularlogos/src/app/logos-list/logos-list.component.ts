@@ -10,12 +10,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-logos-list',
-  standalone: true,
-  imports: [SearchComponent, AsyncPipe, MatCardModule, MatButtonModule, I18nPluralPipe],
-  templateUrl: './logos-list.component.html',
-  styleUrls: ['./logos-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-logos-list',
+    imports: [SearchComponent, AsyncPipe, MatCardModule, MatButtonModule, I18nPluralPipe],
+    templateUrl: './logos-list.component.html',
+    styleUrls: ['./logos-list.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LogosListComponent {
 
