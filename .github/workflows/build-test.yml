@@ -2,7 +2,7 @@ name: Build & Test on PR
 
 on:
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   build-test:
@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 20 ]
+        node-version: [ 22 ]
 
     steps:
       - name: Checkout
