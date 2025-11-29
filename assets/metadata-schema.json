@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/LogoMetadataFileSchema",
+  "definitions": {
+    "LogoMetadataFileSchema": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "$ref": "http://json-schema.org/draft-07/schema#"
+        },
+        "logos": {
+          "$ref": "#/definitions/LogoMetadataAll"
+        }
+      },
+      "required": ["logos"],
+      "additionalProperties": false
+    },
+    "LogoMetadataAll": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/LogoMetadata"
+      }
+    },
+    "LogoMetadata": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "creator": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": ["name"],
+      "additionalProperties": false
+    }
+  }
+}
