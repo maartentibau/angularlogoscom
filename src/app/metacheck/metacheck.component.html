@@ -1,0 +1,8 @@
+<h2>Logos without metadata</h2>
+
+@let _logosWithoutMetadata = logosWithoutMetadata();
+
+@if (_logosWithoutMetadata) {
+  <strong>Count:</strong> {{ _logosWithoutMetadata.count }}
+  <pre>{{ _logosWithoutMetadata.logos | json }}</pre>
+}
