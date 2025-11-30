@@ -1,11 +1,11 @@
+import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 
 import { DataService } from '../shared/data.service';
-import { LogoMetadataEntities } from '../shared/logo-metadata';
 import { LogoEntry } from '../shared/logo-entry';
-import { JsonPipe } from '@angular/common';
+import { LogoMetadataEntities } from '../shared/logo-metadata';
 
 @Component({
   selector: 'app-metacheck',

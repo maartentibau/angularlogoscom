@@ -7,9 +7,7 @@ export interface LogoMetadata {
   description?: string;
 }
 
-export interface LogoMetadataEntities {
-  [filename: string]: LogoMetadata;
-}
+export type LogoMetadataEntities = Record<string, LogoMetadata>;
 
 export interface LogoMetadataFileSchema {
   logos: LogoMetadataEntities;

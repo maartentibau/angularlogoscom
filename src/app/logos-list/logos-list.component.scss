@@ -16,6 +16,9 @@
 
 .logo {
   width: 180px;
+  display: grid;
+  grid-gap: 10px;
+  align-items: center;
 
   mat-card-content {
     text-align: center;
@@ -29,6 +32,7 @@
   mat-card-title {
     text-align: center;
     font-size: 1rem;
+    padding: 0 10px;
   }
 
   mat-card-actions {

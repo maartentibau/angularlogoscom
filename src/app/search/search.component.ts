@@ -1,17 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnChanges,
-  Output,
-  input,
-  output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, OnChanges } from '@angular/core';
 import { outputFromObservable } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -21,9 +13,9 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchComponent implements OnChanges {
-  searchControl = new FormControl('', { nonNullable: true });
-
   readonly searchTerm = input.required<string | null>();
+
+  searchControl = new FormControl('', { nonNullable: true });
 
   searchTermChange = outputFromObservable(this.searchControl.valueChanges);
 

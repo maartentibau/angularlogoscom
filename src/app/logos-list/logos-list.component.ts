@@ -1,5 +1,8 @@
+import { AsyncPipe, I18nPluralPipe, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { concat, Subject } from 'rxjs';
 import {
@@ -13,16 +16,20 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { DataService } from '../shared/data.service';
 import { SearchComponent } from '../search/search.component';
-import { AsyncPipe, I18nPluralPipe } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
+import { DataService } from '../shared/data.service';
 import { LogoEntry } from '../shared/logo-entry';
 
 @Component({
   selector: 'app-logos-list',
-  imports: [SearchComponent, AsyncPipe, MatCardModule, MatButtonModule, I18nPluralPipe],
+  imports: [
+    SearchComponent,
+    AsyncPipe,
+    MatCardModule,
+    MatButtonModule,
+    I18nPluralPipe,
+    NgOptimizedImage,
+  ],
   templateUrl: './logos-list.component.html',
   styleUrls: ['./logos-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,6 +39,7 @@ export class LogosListComponent {
   readonly #router = inject(Router);
 
   readonly searchTerm$ = new Subject<string | null | undefined>();
+
   readonly firstSearchTerm$ = inject(ActivatedRoute).queryParamMap.pipe(
     map((params) => params.get('q')),
     first((term) => !!term),
@@ -53,9 +61,9 @@ export class LogosListComponent {
     { initialValue: undefined },
   );
 
-  readonly logoCount = computed(() => this.logos()?.length ?? 0);
+  randomSeed = `?v=${Math.floor(Math.random() * 10)}`;
 
-  randomSeed: string = `?v=${Math.floor(Math.random() * 10)}`;
+  readonly logoCount = computed(() => this.logos()?.length ?? 0);
 
   searchTermChangeHandler(searchTerm: string | null | undefined) {
     this.searchTerm$.next(searchTerm);

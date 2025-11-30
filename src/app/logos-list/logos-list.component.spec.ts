@@ -1,12 +1,12 @@
 import { JsonPipe } from '@angular/common';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
 import { Component, Input, Output } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
+import { provideRouter } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
 
-import { LogosListComponent } from './logos-list.component';
 import { DataService } from '../shared/data.service';
+import { LogosListComponent } from './logos-list.component';
 
 @Component({
   selector: 'app-search',
