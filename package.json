@@ -8,7 +8,9 @@
     "build:prod": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "prettier": "pretty-quick --staged"
+    "prettier": "pretty-quick --staged",
+    "lint": "npx eslint",
+    "lint:fix": "npm run lint -- --fix"
   },
   "prettier": {
     "printWidth": 100,
@@ -41,10 +43,17 @@
     "@angular/build": "21.0.1",
     "@angular/cli": "21.0.1",
     "@angular/compiler-cli": "21.0.1",
+    "@typescript-eslint/eslint-plugin": "8.48.0",
+    "@vitest/eslint-plugin": "1.5.1",
+    "angular-eslint": "21.0.1",
+    "eslint": "9.39.1",
+    "eslint-plugin-perfectionist": "4.15.1",
+    "eslint-plugin-simple-import-sort": "12.1.1",
     "jsdom": "27.2.0",
-    "typescript": "5.9.3",
-    "vitest": "4.0.14",
     "prettier": "3.7.3",
-    "pretty-quick": "4.2.2"
+    "pretty-quick": "4.2.2",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.48.0",
+    "vitest": "4.0.14"
   }
 }

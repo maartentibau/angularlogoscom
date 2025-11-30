@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { asyncScheduler, scheduled } from 'rxjs';
 
-import { MetacheckComponent } from './metacheck.component';
 import { DataService } from '../shared/data.service';
+import { MetacheckComponent } from './metacheck.component';
 
 describe('MetacheckComponent', () => {
   let component: MetacheckComponent;

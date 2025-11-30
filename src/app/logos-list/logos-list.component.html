@@ -22,12 +22,18 @@
   @for (logo of logos(); track logo.name) {
     <mat-card class="logo">
       <mat-card-content>
-        <img [src]="logo.imageUrl + randomSeed" [title]="logo.name" height="100px" />
+        <img
+          height="100"
+          width="100"
+          [ngSrc]="`${logo.imageUrl}${randomSeed}`"
+          [title]="logo.name"
+          [alt]="`The logo of ${logo.name}`"
+        />
       </mat-card-content>
       <mat-card-title>{{ logo.name }}</mat-card-title>
       <mat-card-actions>
         @if (logo.website) {
-          <a mat-icon-button [href]="logo.website" target="_blank" title="Website" rel="noreferrer">
+          <a mat-icon-button target="_blank" title="Website" rel="noreferrer" [href]="logo.website">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
               <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
               <path
@@ -38,10 +44,10 @@
         }
         <a
           mat-icon-button
-          [href]="logo.githubUrl"
           target="_blank"
           title="Show on GitHub"
           rel="noreferrer"
+          [href]="logo.githubUrl"
         >
           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 496 512">
             <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
@@ -50,7 +56,7 @@
             />
           </svg>
         </a>
-        <a mat-icon-button [href]="logo.rawUrl" target="_blank" title="Show raw" rel="noreferrer">
+        <a mat-icon-button target="_blank" title="Show raw" rel="noreferrer" [href]="logo.rawUrl">
           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
             <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
             <path

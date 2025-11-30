@@ -1,7 +1,7 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, shareReplay, withLatestFrom } from 'rxjs/operators';
+import { inject, Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
+import { map, shareReplay, withLatestFrom } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { LogoEntry } from './logo-entry';
@@ -11,8 +11,8 @@ import { GitHubContentStub, LogoMetadataEntities, LogoMetadataFileSchema } from 
   providedIn: 'root',
 })
 export class DataService {
-  #logos$?: Observable<LogoEntry[]>;
   readonly #http = inject(HttpClient);
+  #logos$?: Observable<LogoEntry[]>;
 
   getLogos(): Observable<LogoEntry[]> {
     if (!this.#logos$) {
