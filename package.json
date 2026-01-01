@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@angular/build": "21.0.1",
-    "@angular/cli": "21.0.1",
+    "@angular/cli": "21.0.4",
     "@angular/compiler-cli": "21.0.2",
     "@typescript-eslint/eslint-plugin": "8.48.0",
     "@vitest/eslint-plugin": "1.5.1",
