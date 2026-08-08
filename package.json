@@ -49,8 +49,13 @@
     "vitest-browser-angular": "0.5.0"
   },
   "engines": {
-    "node": "=26.5.0",
-    "pnpm": ">=11.20.0"
+    "node": "=26.5.0"
   },
-  "engineStrict": true
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=11.20.0 <12.0.0",
+      "onFail": "download"
+    }
+  }
 }
