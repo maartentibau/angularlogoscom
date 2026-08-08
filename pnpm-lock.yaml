@@ -292,9 +292,6 @@ importers:
       vitest:
         specifier: 4.1.10
         version: 4.1.10(@vitest/browser-playwright@4.1.10)(jsdom@30.0.1)(vite@8.1.5(esbuild@0.28.1)(sass@1.101.0))
-      vitest-browser-angular:
-        specifier: 0.5.0
-        version: 0.5.0(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(@angular/router@22.1.0(@angular/common@22.1.0(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(@angular/platform-browser@22.1.0(@angular/common@22.1.0(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2)))(rxjs@7.8.2))(@vitest/browser@4.1.10(vite@8.1.5(esbuild@0.28.1)(sass@1.101.0))(vitest@4.1.10))(vitest@4.1.10)
 
 packages:
 
@@ -3104,15 +3101,6 @@ packages:
       yaml:
         optional: true
 
-  vitest-browser-angular@0.5.0:
-    resolution: {integrity: sha512-QsFPmiaK4hAR8rSltKJKBcdMyuR4f1IUQVW/2DXmXLPHtr0CVckclRCH9RaIYqQJ5nyc/C5sBHilWfkoeNB0dw==}
-    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
-    peerDependencies:
-      '@angular/core': '>=20.0.0 <23.0.0'
-      '@angular/router': '>=20.0.0 <23.0.0'
-      '@vitest/browser': ^2.1.0 || ^3.0.0 || ^4.0.0-0
-      vitest: ^2.1.0 || ^3.0.0 || ^4.0.0
-
   vitest@4.1.10:
     resolution: {integrity: sha512-R9jUTe5S4Qb0HCd4TNqpC7oGcrMssMRGXLW80ubjWsW9VH5GF8y1Y0SFLY9AbqSk6nt0PnOx4H4WNJYZ13GUPw==}
     engines: {node: ^20.0.0 || ^22.0.0 || >=24.0.0}
@@ -5855,13 +5843,6 @@ snapshots:
       esbuild: 0.28.1
       fsevents: 2.3.3
       sass: 1.101.0
-
-  vitest-browser-angular@0.5.0(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(@angular/router@22.1.0(@angular/common@22.1.0(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(@angular/platform-browser@22.1.0(@angular/common@22.1.0(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2)))(rxjs@7.8.2))(@vitest/browser@4.1.10(vite@8.1.5(esbuild@0.28.1)(sass@1.101.0))(vitest@4.1.10))(vitest@4.1.10):
-    dependencies:
-      '@angular/core': 22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2)
-      '@angular/router': 22.1.0(@angular/common@22.1.0(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(@angular/platform-browser@22.1.0(@angular/common@22.1.0(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2))(rxjs@7.8.2))(@angular/core@22.1.0(@angular/compiler@22.1.0)(rxjs@7.8.2)))(rxjs@7.8.2)
-      '@vitest/browser': 4.1.10(vite@8.1.5(esbuild@0.28.1)(sass@1.101.0))(vitest@4.1.10)
-      vitest: 4.1.10(@vitest/browser-playwright@4.1.10)(jsdom@30.0.1)(vite@8.1.5(esbuild@0.28.1)(sass@1.101.0))
 
   vitest@4.1.10(@vitest/browser-playwright@4.1.10)(jsdom@30.0.1)(vite@8.1.5(esbuild@0.28.1)(sass@1.101.0)):
     dependencies:

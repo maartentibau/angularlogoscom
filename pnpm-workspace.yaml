@@ -1,6 +1,7 @@
 minimumReleaseAge: 1440 # 1 day
 savePrefix: '' # saveExact equivalent
-verifyDepsBeforeRun: warn
+verifyDepsBeforeRun: error
+engineStrict: true
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true
@@ -8,3 +9,6 @@ allowBuilds:
   msgpackr-extract: true
 minimumReleaseAgeExclude:
   - eslint@10.8.1
+strictDepBuilds: true
+blockExoticSubdeps: true
+trustPolicy: no-downgrade
