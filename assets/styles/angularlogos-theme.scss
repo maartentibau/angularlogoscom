@@ -31,8 +31,8 @@ $palette: (
     A100: #000000,
     A200: #000000,
     A400: #000000,
-    A700: #000000
-  )
+    A700: #000000,
+  ),
 );
 
 $primary: mat.m2-define-palette($palette, 500);
@@ -44,9 +44,9 @@ $crelan-material-theme: mat.m2-define-light-theme(
     color: (
       primary: $primary,
       accent: $accent,
-      warn: $warn
+      warn: $warn,
     ),
-    density: 0
+    density: 0,
   )
 );
 
