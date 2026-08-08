@@ -5,16 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { concat, Subject } from 'rxjs';
-import {
-  debounceTime,
-  first,
-  map,
-  shareReplay,
-  startWith,
-  switchMap,
-  takeUntil,
-  tap,
-} from 'rxjs/operators';
+import { debounceTime, first, map, shareReplay, startWith, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 import { SearchComponent } from '../search/search.component';
 import { DataService } from '../shared/data.service';
@@ -22,14 +13,7 @@ import { LogoEntry } from '../shared/logo-entry';
 
 @Component({
   selector: 'app-logos-list',
-  imports: [
-    SearchComponent,
-    AsyncPipe,
-    MatCardModule,
-    MatButtonModule,
-    I18nPluralPipe,
-    NgOptimizedImage,
-  ],
+  imports: [SearchComponent, AsyncPipe, MatCardModule, MatButtonModule, I18nPluralPipe, NgOptimizedImage],
   templateUrl: './logos-list.component.html',
   styleUrls: ['./logos-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -46,9 +30,7 @@ export class LogosListComponent {
     takeUntil(this.searchTerm$),
   );
 
-  readonly finalSearchTerm = toSignal(
-    concat(this.firstSearchTerm$, this.searchTerm$).pipe(shareReplay(1)),
-  );
+  readonly finalSearchTerm = toSignal(concat(this.firstSearchTerm$, this.searchTerm$).pipe(shareReplay(1)));
 
   readonly logos = toSignal<LogoEntry[] | undefined>(
     toObservable(this.finalSearchTerm).pipe(

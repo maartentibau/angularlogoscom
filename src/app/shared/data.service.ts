@@ -20,9 +20,7 @@ export class DataService {
         this.#http.get<GitHubContentStub[]>(`${environment.apiBaseUrl}/contents/logos`),
         this.getMetadataCached(),
       ]).pipe(
-        map(([contents, metadataAll]) =>
-          contents.map((content) => this.mapGitHubContentToLogoEntry(content, metadataAll)),
-        ),
+        map(([contents, metadataAll]) => contents.map((content) => this.mapGitHubContentToLogoEntry(content, metadataAll))),
         shareReplay(),
       );
     }
@@ -40,18 +38,11 @@ export class DataService {
   getLogosFiltered(searchTerm: string | null | undefined): Observable<LogoEntry[]> {
     const lowerCaseTerm = searchTerm?.toLowerCase() ?? '';
     return this.getLogos().pipe(
-      map((logos) =>
-        searchTerm
-          ? logos.filter((logo) => logo.name.toLowerCase().includes(lowerCaseTerm))
-          : logos,
-      ),
+      map((logos) => (searchTerm ? logos.filter((logo) => logo.name.toLowerCase().includes(lowerCaseTerm)) : logos)),
     );
   }
 
-  private mapGitHubContentToLogoEntry(
-    content: GitHubContentStub,
-    metadataAll: LogoMetadataEntities,
-  ): LogoEntry {
+  private mapGitHubContentToLogoEntry(content: GitHubContentStub, metadataAll: LogoMetadataEntities): LogoEntry {
     const filename = content.name;
     const metadata = metadataAll[filename] || {};
 

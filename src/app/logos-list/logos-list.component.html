@@ -1,20 +1,13 @@
-<app-search
-  [searchTerm]="firstSearchTerm$ | async"
-  (searchTermChange)="searchTermChangeHandler($event)"
-/>
+<app-search [searchTerm]="firstSearchTerm$ | async" (searchTermChange)="searchTermChangeHandler($event)" />
 
 <div class="result-count">
   @if (finalSearchTerm()) {
     Your search returned
-    <strong>{{
-      logoCount() | i18nPlural: { '=0': 'no results', '=1': 'one result', other: '# results' }
-    }}</strong
+    <strong>{{ logoCount() | i18nPlural: { '=0': 'no results', '=1': 'one result', other: '# results' } }}</strong
     >.
   } @else {
     This list contains <strong>{{ logoCount() }} logos</strong>.
-    <a href="https://github.com/maartentibau/angular-logos/pulls" target="_blank" rel="noreferrer"
-      >Do you want to add yours?</a
-    >
+    <a href="https://github.com/maartentibau/angular-logos/pulls" target="_blank" rel="noreferrer">Do you want to add yours?</a>
   }
 </div>
 
@@ -22,13 +15,7 @@
   @for (logo of logos(); track logo.name) {
     <mat-card class="logo">
       <mat-card-content>
-        <img
-          height="100"
-          width="100"
-          [ngSrc]="`${logo.imageUrl}${randomSeed}`"
-          [title]="logo.name"
-          [alt]="`The logo of ${logo.name}`"
-        />
+        <img height="100" width="100" [ngSrc]="`${logo.imageUrl}${randomSeed}`" [title]="logo.name" [alt]="`The logo of ${logo.name}`" />
       </mat-card-content>
       <mat-card-title>{{ logo.name }}</mat-card-title>
       <mat-card-actions>
@@ -42,13 +29,7 @@
             </svg>
           </a>
         }
-        <a
-          mat-icon-button
-          target="_blank"
-          title="Show on GitHub"
-          rel="noreferrer"
-          [href]="logo.githubUrl"
-        >
+        <a mat-icon-button target="_blank" title="Show on GitHub" rel="noreferrer" [href]="logo.githubUrl">
           <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 496 512">
             <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
             <path

@@ -14,9 +14,7 @@ import { LogoMetadataEntities } from '../shared/logo-metadata';
   styleUrls: ['./metacheck.component.scss'],
 })
 export class MetacheckComponent {
-  readonly logosWithoutMetadata = toSignal<
-    { count: number; logos: LogoMetadataEntities } | undefined
-  >(
+  readonly logosWithoutMetadata = toSignal<{ count: number; logos: LogoMetadataEntities } | undefined>(
     inject(DataService)
       .getLogosWithoutMetadata()
       .pipe(

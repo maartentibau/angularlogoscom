@@ -8,27 +8,25 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [ 22 ]
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
         env:
-          CYPRESS_INSTALL_BINARY: 0
+          PNPM_HOME: /home/runner/.local/share/pnpm
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          node-version-file: '.nvmrc'
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
+        env:
+          CYPRESS_INSTALL_BINARY: 0
 
-      - name: Test
-        run: npm run test
-
-      - name: Build
-        run: npm run build:prod
+      - name: Run tests
+        run: pnpm run test
